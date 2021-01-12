@@ -4,7 +4,9 @@ import java.util.*;
 public class Solution {
 
     public static void main(String[] args) {
-        Queue<Integer> q=new ArrayDeque<>();
+        Stack<Integer> s1=new Stack<>();
+        Stack<Integer> s2=new Stack<>();
+        
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
         int a;
@@ -12,13 +14,25 @@ public class Solution {
             a=sc.nextInt();
             switch(a){
                 case 1:
-                q.add(sc.nextInt());
+                s2.push(sc.nextInt());
                 break;
                 case 2:
-                q.remove();
+                if(!s1.isEmpty()){s1.pop();}
+                else{
+                    while(!s2.isEmpty()){
+                        s1.push(s2.pop());
+                    }
+                    s1.pop();
+                }
                 break;
                 case 3:
-                System.out.println(q.peek());
+                if(!s1.isEmpty()){System.out.println(s1.peek());}
+                else{
+                    while(!s2.isEmpty()){
+                        s1.push(s2.pop());
+                    }
+                    System.out.println(s1.peek());
+                }
                 break;
             }
         }
