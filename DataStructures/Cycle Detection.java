@@ -23,3 +23,24 @@ static boolean hasCycle(SinglyLinkedListNode head) {//the questions says that th
         return false;
 
     }
+
+static boolean hasCycle(SinglyLinkedListNode head) {// I have written this code because in normal life this is the way how i detect this issue. if the code doesnot finish in a few seconds, i terminate it and say there is an infinite loop
+        long l=System.currentTimeMillis();
+        while(System.currentTimeMillis()-l<500&&head!=null)head=head.next; //if it doesn't reach the end in 500 milisecond we assume that this is and infinite loop
+        
+        return head!=null;// it head becames null it is not infinite loop otherwise it is
+    }
+
+
+static boolean hasCycle(SinglyLinkedListNode head) {// this solution is exist on youtube Hackerrank channel actually. It is very good i recommend you to have a look at there.
+        if(head==null)return false;
+        SinglyLinkedListNode fast=head.next;
+        SinglyLinkedListNode slow=head;
+        while(slow!=null&&fast!=null&&fast.next!=null){
+            if(fast==slow)return true;
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+
+    return false;
+    }
