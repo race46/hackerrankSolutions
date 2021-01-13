@@ -10,6 +10,16 @@ static boolean hasCycle(SinglyLinkedListNode head) {//the questions says that th
             return false;
         }
     }
+
+static boolean hasCycle(SinglyLinkedListNode head) {//better than above
+        
+            for(int i=0;i<1001;i++){
+                if(head==null)return false;
+                head=head.next;
+            }
+            return true;       
+        
+    }
     
     
     
